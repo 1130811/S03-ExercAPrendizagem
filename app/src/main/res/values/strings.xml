@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">S03-ExercAPrendizagem</string>
+    <string name="action_settings">action_settings-cenas</string>
+    <string name="ButtonTextAdd">Adicionar</string>
+    <string name="ButtonTextCancel">Cancelar</string>
+    <string name="ButtonApagaStud">Apagar</string>
+    <string name="ButtonGuardarEdicao">Guardar</string>
+
+
+    <string-array name="students">
+        <item>Pedro Almeida</item>
+        <item>Paulo Ribeiro</item>
+        <item>Rita Sousa</item>
+        <item>Matilde Sousa</item>
+        <item>Matilde Coelho</item>
+        <item>Dinis Sousa</item>
+        <item>Maria Pereira</item>
+        <item>Teresa Campos</item>
+        <item>Pedro Viola</item>
+        <item>Norberto Sousa</item>
+        <item>Rita Santos</item>
+        <item>Catarina Moreira</item>
+    </string-array>
+
+
+</resources>
