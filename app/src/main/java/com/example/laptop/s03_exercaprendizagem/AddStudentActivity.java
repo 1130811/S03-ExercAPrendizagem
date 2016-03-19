@@ -20,6 +20,7 @@ public class AddStudentActivity extends AppCompatActivity {
 
         /***BOTAO OK**/
         Button bOk = (Button) findViewById(R.id.btnAdicNovo);
+        assert bOk != null;
         bOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,7 @@ public class AddStudentActivity extends AppCompatActivity {
         });
         /***BOTAO CANCELAR**/
         Button bCancelar = (Button) findViewById(R.id.btnCancelarNovo);
+        assert bCancelar != null;
         bCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

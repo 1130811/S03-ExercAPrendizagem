@@ -20,13 +20,16 @@ public class StudentEditionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.studet_edition);
 
-        EditText eText = (EditText) findViewById(R.id.studenteditionText);
+
+        final EditText eText = (EditText) findViewById(R.id.studenteditionText);
         Intent intent = this.getIntent();
         pos = intent.getIntExtra("POSICAO", -1); //caso nao haja considera -1
         estudante=intent.getStringExtra("NOME");
 
-        /***BOTAO OK**/
-        Button bOk = (Button) findViewById(R.id.btnAdicNovo);
+        eText.setText(estudante);
+        //BOTAO OK
+        Button bOk = (Button) findViewById(R.id.btnGuardaEdicao);
+
         bOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,23 +37,27 @@ public class StudentEditionActivity extends AppCompatActivity {
 
                 //intent e retorno
                 Intent i = new Intent();
-                i.putExtra("NOVO_NOME", estudante);
+                i.putExtra("ACAO","editado");
+                i.putExtra("NOVO_NOME",String.valueOf(eText.getText()));
                 i.putExtra("POSICAO",pos);
                 setResult(2, i);
                 finish();
             }
         });
-        /***BOTAO CANCELAR**/
+        //BOTAO CANCELAR
         Button bCancelar = (Button) findViewById(R.id.btnApagaEstudante);
+
         bCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
+                i.putExtra("ACAO","eliminado");
                 i.putExtra("POSICAO",pos);
                 setResult(2, i);
                 finish();
             }
         });
+
 
     }
 }

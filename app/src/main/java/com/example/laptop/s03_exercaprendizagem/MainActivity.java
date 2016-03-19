@@ -108,23 +108,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 //neste caso não preciso/vou analisar o resultCode
-        switch (requestCode) {
-            case 1:
-                if (data != null) {
+        if (data != null) {
+            switch (requestCode) {
+                case 1:
+
                     String msg = data.getStringExtra("EXTRA_MESSAGE");
                     listaStudents.add(msg);
                     adapter.notifyDataSetChanged();//faz refresh à listView
                     break;
-                }
 
-            case 2:
-                int posAEliminar = data.getIntExtra("POSICAO",-1);//se nao houver retorno por default fica -1
-                String nomeAEliminar = listaStudents.get(posAEliminar);
-                listaStudents.remove(posAEliminar);
-                Toast.makeText(this, " Estudante: " + nomeAEliminar +"!!", Toast.LENGTH_LONG).show();
-                break;
+                case 2:
 
+
+                    int posicao = data.getIntExtra("POSICAO", -1);//se quiser eliminar ca -1
+                    String acao = data.getStringExtra("ACAO");
+
+                    if (posicao!=-1){
+                        if(acao.equalsIgnoreCase("editado")){
+                            String novoNome = data.getStringExtra("NOVO_NOME");
+                            listaStudents.set(posicao,novoNome);
+                            adapter.notifyDataSetChanged();//faz refresh à listView
+                            Toast.makeText(this, "Alterado nome para: " + novoNome + "!!", Toast.LENGTH_SHORT).show();
+                            break;
+                        }else{
+                            String nomeAEliminar = listaStudents.get(posicao);
+                            listaStudents.remove(posicao);
+                            Toast.makeText(this, " Estudante: " + nomeAEliminar + " eliminado!!", Toast.LENGTH_LONG).show();
+                            break;
+                        }
+                    }
+                                }
         }
-
     }
 }
